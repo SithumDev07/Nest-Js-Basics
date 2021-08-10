@@ -37,10 +37,7 @@ export class MoviesController {
     //If we use put it will update the whole movie
     @Patch('/:id')
     update(@Param('id') movieId: string, @Body() updateData) {
-        return {
-            updatedMovie: movieId,
-            ...updateData,
-        }
+        return this.movieService.update(movieId, updateData);
     }
 
 
