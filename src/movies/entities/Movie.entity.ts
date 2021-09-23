@@ -1,6 +1,11 @@
 export class Movie {
     id: number;
     title: string;
-    year: number;
+    description: string;
+    photoURI: string;
+    duration: string;
+    released: string;
+    rating: number;
     genres: string[];
+    backgroundImageURI: string;
 }

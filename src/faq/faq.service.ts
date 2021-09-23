@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException, Param } from "@nestjs/common";
 import { CreateFAQDTO } from "./dto/create-faq.dto";
+import { UpdateFAQDTO } from "./dto/update-faq.dto";
 import { FAQ } from "./entities/FAQEntity";
 
 @Injectable()
@@ -25,4 +26,14 @@ export class FAQService {
         })
     }
 
+    deleteOne(id: number) {
+        this.getOne(id);
+        this.faqs = this.faqs.filter(faq => faq.id !== id);
+    }
+
+    update(id: number, updateData: UpdateFAQDTO) {
+        const faq = this.getOne(id);
+        this.deleteOne(id);
+        this.faqs.push({ ...faq, ...updateData });
+    }
 }
