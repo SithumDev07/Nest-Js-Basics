@@ -27,8 +27,14 @@ export class MoviesService {
     }
 
     create(movieData: CreateMovieDto) {
+        let id: number;
+        if (this.movies.length === 0) {
+            id = this.movies.length + 1;
+        } else {
+            id = this.movies.find((_, index) => index == this.movies.length - 1).id + 1
+        }
         this.movies.push({
-            id: this.movies.length + 1,
+            id: id,
             ...movieData
         })
     }
